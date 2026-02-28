@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap');
+        :root { --bg: #0a0a0a; --border: #222; --accent: #fff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: #fff; text-transform: uppercase; line-height: 1.2; }
+        
+        /* Navigation */
+        nav { display: flex; justify-content: space-between; padding: 30px 40px; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--bg); z-index: 1000; }
+        .nav-links a { color: #888; text-decoration: none; font-size: 11px; margin-left: 30px; letter-spacing: 1px; }
+        .nav-links a:hover { color: #fff; }
+
+        /* Project Form Header */
+        header { padding: 100px 40px; border-bottom: 1px solid var(--border); }
+        h1 { font-size: clamp(50px, 10vw, 120px); font-weight: 900; letter-spacing: -6px; line-height: 0.8; }
+
+        .project-container { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border-bottom: 1px solid var(--border); }
+        .pane { background: var(--bg); padding: 60px 40px; }
+
+        /* Steps & Inputs */
+        .step { margin-bottom: 40px; }
+        .step-num { font-size: 10px; color: #444; margin-bottom: 10px; display: block; }
+        h3 { font-size: 24px; margin-bottom: 20px; }
+        
+        input, select { width: 100%; background: transparent; border: 1px solid #333; padding: 20px; color: #fff; margin-bottom: 20px; text-transform: uppercase; font-family: 'Inter'; }
+        input:focus { border-color: #fff; outline: none; }
+
+        /* Legal Box */
+        .legal-check { font-size: 11px; color: #666; display: flex; align-items: flex-start; gap: 10px; text-transform: none; cursor: pointer; }
+        .legal-check input { width: auto; margin-top: 3px; }
+
+        .total-box { border: 1px solid var(--accent); padding: 40px; text-align: center; }
+        .pay-btn { background: #fff; color: #000; width: 100%; padding: 25px; font-weight: 900; border: none; cursor: pointer; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">DISNET STUDIOS // PROJECT DEPLOYMENT</div>
+    <div class="nav-links">
+        <a href="service_guide.html">SERVICES</a>
+        <a href="terms.html">MSA / TERMS</a>
+        <a href="index.html">SHOP</a>
+    </div>
+</nav>
+
+<header>
+    <h1>INITIATE<br>PROJECT.</h1>
+</header>
+
+<div class="project-container">
+    <div class="pane">
+        <div class="step">
+            <span class="step-num">01 / IDENTIFICATION</span>
+            <h3>PROJECT IDENTITY</h3>
+            <input type="text" placeholder="CLIENT / COMPANY NAME">
+            <input type="email" placeholder="CONTACT EMAIL">
+            <input type="text" id="mpesa-phone" placeholder="MPESA PHONE (254...)">
+        </div>
+
+        <div class="step">
+            <span class="step-num">02 / SCOPE SELECTION</span>
+            <h3>CHOOSE SERVICE</h3>
+            <select id="service-type">
+                <option value="software">SOFTWARE DEVELOPMENT</option>
+                <option value="marketing">MARKETING STRATEGY</option>
+                <option value="content">CONTENT PRODUCTION</option>
+                <option value="bundle">FULL OS BUNDLE</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="pane" style="border-left: 1px solid #222;">
+        <div class="step">
+            <span class="step-num">03 / LEGAL & AGREEMENT</span>
+            <h3>TERMS OF SERVICE</h3>
+            <p style="font-size: 12px; color: #666; text-transform: none; margin-bottom: 20px;">By initiating this project, you agree to the Disnet Studios Master Service Agreement. Intellectual Property (IP) for software and assets will transfer upon final payment.</p>
+            <label class="legal-check">
+                <input type="checkbox" id="terms">
+                I HAVE READ AND ACCEPT THE PROJECT TERMS AND CONDITIONS.
+            </label>
+        </div>
+
+        <div class="total-box">
+            <p class="step-num">PROJECT COMMITMENT</p>
+            <h2 id="price-display" style="font-size: 40px; margin: 10px 0;">KES 15,000.00</h2>
+            <button class="pay-btn" onclick="startOnboarding()">PAY & DEPLOY TO NOTION</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    async function startOnboarding() {
+        const terms = document.getElementById('terms').checked;
+        const phone = document.getElementById('mpesa-phone').value;
+        
+        if(!terms) return alert("PLEASE ACCEPT TERMS TO PROCEED");
+        if(!phone) return alert("ENTER MPESA NUMBER");
+
+        // TRIGGER M-PESA STK PUSH
+        // IF SUCCESS -> CALL NOTION API
+        alert("STK PUSH SENT. UPON SUCCESS, YOUR NOTION DASHBOARD WILL BE DEPLOYED.");
+    }
+</script>
+
+</body>
+</html>

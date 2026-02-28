@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disnet Studios | Creative Business OS</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+
+        :root {
+            --bg: #0a0a0a;
+            --white: #ffffff;
+            --gray: #888888;
+            --accent: #f0f0f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--white); overflow-x: hidden; }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid #222;
+            position: sticky;
+            top: 0;
+            background: var(--bg);
+            z-index: 100;
+        }
+        .nav-links a { color: var(--white); text-decoration: none; margin-right: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+        .logo { font-weight: 900; font-size: 18px; letter-spacing: -1px; }
+
+        /* Hero / Countdown */
+        header { padding: 100px 40px; text-align: center; border-bottom: 1px solid #222; }
+        .countdown { font-size: clamp(60px, 15vw, 180px); font-weight: 900; letter-spacing: -5px; line-height: 0.8; margin-bottom: 20px; }
+        .countdown-labels { display: flex; justify-content: center; gap: 40px; color: var(--gray); font-size: 14px; margin-bottom: 40px; }
+
+        /* Product Grid */
+        .store-section { padding: 80px 40px; }
+        .filter-bar { display: flex; gap: 20px; margin-bottom: 40px; color: var(--gray); font-size: 12px; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 40px; }
+        .product-card { cursor: pointer; transition: 0.3s; }
+        .product-image { background: #1a1a1a; aspect-ratio: 16/9; margin-bottom: 20px; border: 1px solid #222; position: relative; overflow: hidden; }
+        .product-image img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
+        .product-card:hover .product-image { border-color: var(--white); }
+        .product-info h3 { font-size: 14px; margin-bottom: 5px; text-transform: uppercase; }
+        .product-info p { font-size: 14px; color: var(--gray); }
+
+        /* Cart Drawer */
+        #cart-drawer {
+            position: fixed;
+            right: -400px;
+            top: 0;
+            width: 400px;
+            height: 100%;
+            background: #111;
+            border-left: 1px solid #333;
+            transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 1000;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+        #cart-drawer.open { right: 0; }
+        .cart-header { display: flex; justify-content: space-between; margin-bottom: 40px; }
+        .checkout-btn { 
+            background: var(--white); 
+            color: #000; 
+            padding: 20px; 
+            text-align: center; 
+            font-weight: 900; 
+            text-decoration: none; 
+            margin-top: auto; 
+            cursor: pointer;
+        }
+
+        /* M-Pesa STK Form */
+        .stk-form { display: none; margin-top: 20px; border-top: 1px solid #333; padding-top: 20px; }
+        .stk-form.active { display: block; }
+        input { background: #000; border: 1px solid #333; color: #fff; padding: 15px; width: 100%; margin-bottom: 10px; }
+
+        footer { padding: 100px 40px; background: #000; }
+        .giant-footer-logo { font-size: clamp(50px, 18vw, 250px); font-weight: 900; letter-spacing: -10px; opacity: 0.9; }
+
+
+
+:root {
+    --bg-color: #f9f9f9;
+    --text-color: #1a1a1a;
+    --accent-color: #000000;
+}
+
+.hero-section {
+    background-color: var(--bg-color);
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+.hero-container {
+    max-width: 1200px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.hero-title {
+    font-size: clamp(3rem, 8vw, 5rem); /* Scalable font size */
+    font-weight: 800;
+    margin-bottom: 10px;
+    letter-spacing: -2px;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.hero-image-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.main-product-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.1));
+    transition: transform 0.3s ease;
+}
+
+.main-product-image:hover {
+    transform: translateY(-10px);
+}
+
+.btn {
+    padding: 12px 24px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.btn-primary {
+    background: var(--accent-color);
+    color: white;
+}
+
+.btn-secondary {
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+/* Mobile Layout */
+@media (max-width: 768px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .hero-content {
+        order: 2;
+    }
+    
+    .hero-image-wrapper {
+        order: 1;
+    }
+}
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-links">
+        <a href="#">Business OS</a>
+        <a href="#">Learn +</a>
+    </div>
+    <div class="logo">DISNET STUDIOS</div>
+    <div class="nav-links">
+        <a href="javascript:void(0)" onclick="toggleCart()">Cart (0)</a>
+    </div>
+</nav>
+
+<header>
+    <div class="countdown" id="timer">18:19:56:30</div>
+    <div class="countdown-labels">
+        <span>Days</span>
+        <span>Hours</span>
+        <span>Minutes</span>
+        <span>Seconds</span>
+    </div>
+    <button style="background:transparent; color:white; border:1px solid white; padding: 15px 40px; font-weight:bold; cursor:pointer;">SIGN UP</button>
+</header>
+
+<section class="hero-section">
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1 class="hero-title">lately?</h1>
+            <p class="hero-subtitle">Archiving the mundane. Curated by Disnet Studios.</p>
+            <div class="hero-cta">
+                <a href="#shop" class="btn btn-primary">Shop Collection</a>
+                <a href="#about" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+        
+        <div class="hero-image-wrapper">
+            <img src="disnet_product.png" alt="Disnet Studios Product" class="main-product-image">
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+<section style="padding: 80px 40px; border-top: 1px solid #222; border-bottom: 1px solid #222;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px;">
+        <div>
+            <p style="font-size: 12px; color: #666; margin-bottom: 20px;">[FREE RESOURCE]</p>
+            <h2 style="font-size: 60px; font-weight: 900; line-height: 1;">THE BRAND<br>WORKBOOK.</h2>
+            <p style="margin-top: 30px; text-transform: none; color: #888;">Download our internal 24-page workbook used to define strategy for software startups and content creators.</p>
+        </div>
+        <div style="display: flex; flex-direction: column; justify-content: center;">
+            <input type="email" id="lead-email" placeholder="ENTER YOUR EMAIL" style="padding: 20px; background: #000; border: 1px solid #333; color: #fff; margin-bottom: 10px;">
+            <button onclick="captureLead()" style="background: #fff; color: #000; padding: 20px; font-weight: 900; border: none; cursor: pointer;">GET FREE ACCESS</button>
+        </div>
+    </div>
+</section>
+
+<script>
+function captureLead() {
+    const email = document.getElementById('lead-email').value;
+    if(!email) return alert("Email required");
+    
+    // Automation: Send to your Backend -> Zapier -> Notion
+    alert("Workbook sent to " + email + ". Check your inbox.");
+}
+</script>
+
+<section class="store-section">
+    <div class="filter-bar">
+        <span>SORT: FEATURED</span>
+        <span>BEST SELLING</span>
+    </div>
+    <div class="product-grid">
+        <div class="product-card" onclick="addToCart('Brand Book', 6600)">
+            <div class="product-image">
+<img src="product_1.jpeg" alt="Disnet Studios Product" class="main-product-image"></div>
+            <div class="product-info">
+                <h3>Brand Book</h3>
+                <p>KSH 6,600.00 KES</p>
+            </div>
+        </div>
+        <div class="product-card" onclick="addToCart('Brand Guidelines', 4500)">
+            <div class="product-image"><img src="product_2.png" alt="Disnet Studios Product" class="main-product-image"></div>
+            <div class="product-info">
+                <h3>Brand Guidelines</h3>
+                <p>KSH 4,500.00 KES</p>
+            </div>
+        </div>
+        <div class="product-card" onclick="addToCart('Service Agreement', 3600)">
+            <div class="product-image"><img src="product_3.jpeg" alt="Disnet Studios Product" class="main-product-image"></div>
+            <div class="product-info">
+                <h3>Service Agreement</h3>
+                <p>KSH 3,600.00 KES</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="cart-drawer">
+    <div class="cart-header">
+        <h2>YOUR CART</h2>
+        <span onclick="toggleCart()" style="cursor:pointer;">CLOSE</span>
+    </div>
+    <div id="cart-items">
+        <p style="color:#555;">Your cart is empty.</p>
+    </div>
+    
+    <div class="stk-form" id="stk-section">
+        <p class="small" style="margin-bottom:10px;">ENTER MPESA NUMBER</p>
+        <input type="text" id="phone" placeholder="2547XXXXXXXX">
+        <p style="font-size:10px; color:#666; margin-bottom:10px;">A prompt will be sent to your phone to complete payment.</p>
+    </div>
+
+    <div class="checkout-btn" onclick="initiateSTK()">CHECKOUT VIA M-PESA</div>
+</div>
+
+<section style="background: #0a0a0a; padding: 100px 40px; border-bottom: 1px solid #222;">
+    <h2 style="font-size: 60px; font-weight: 900; letter-spacing: -4px; line-height: 0.9; margin-bottom: 60px;">CHOOSE YOUR SYSTEM.</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+        <div>
+            <div style="background: #111; aspect-ratio: 1/1; border: 1px solid #222; margin-bottom: 25px; display: flex; align-items: center; justify-content: center;">
+                 <img src="frameworks-mockup.png" style="width: 80%;">
+            </div>
+            <h3 style="font-size: 18px; margin-bottom: 5px;">CREATIVE BUSINESS FRAMEWORKS</h3>
+            <p style="font-size: 14px; color: #666; margin-bottom: 15px;">KSH 6,600.00 KES</p>
+            <p style="text-transform: none; color: #888; font-size: 12px; margin-bottom: 20px;">Includes: Portfolio, Services Guide, Proposal, Pitch, Contract, Invoice.</p>
+            <a href="#" style="color: #fff; font-size: 11px; font-weight: 900; text-decoration: underline;">JOIN THE WAITLIST →</a>
+        </div>
+        <div>
+            <div style="background: #111; aspect-ratio: 1/1; border: 1px solid #222; margin-bottom: 25px;">
+                 <img src="workspace-mockup.png" style="width: 80%;">
+            </div>
+            <h3 style="font-size: 18px; margin-bottom: 5px;">CREATIVE BUSINESS WORKSPACE</h3>
+            <p style="font-size: 14px; color: #666; margin-bottom: 15px;">KSH 4,500.00 KES</p>
+            <p style="text-transform: none; color: #888; font-size: 12px; margin-bottom: 20px;">All-in-One Studio Workspace with trackers, planners, and client portals.</p>
+            <a href="#" style="color: #fff; font-size: 11px; font-weight: 900; text-decoration: underline;">JOIN THE WAITLIST →</a>
+        </div>
+        <div>
+            <div style="background: #111; aspect-ratio: 1/1; border: 1px solid #222; margin-bottom: 25px;">
+                 <img src="os-mockup.png" style="width: 80%;">
+            </div>
+            <h3 style="font-size: 18px; margin-bottom: 5px;">CREATIVE BUSINESS OS</h3>
+            <p style="font-size: 14px; color: #666; margin-bottom: 15px;">KSH 22,000.00 KES</p>
+            <p style="text-transform: none; color: #888; font-size: 12px; margin-bottom: 20px;">The Full Bundle: Workspace + Frameworks for the serious studio owner.</p>
+            <a href="#" style="color: #fff; font-size: 11px; font-weight: 900; text-decoration: underline;">JOIN THE WAITLIST →</a>
+        </div>
+    </div>
+</section>
+
+
+<section style="background: #0a0a0a; color: #fff; padding: 100px 40px; border-bottom: 1px solid #222;">
+    <h2 style="font-size: 10px; color: #666; letter-spacing: 2px; margin-bottom: 60px;">[ HOW THE SYSTEM RUNS ]</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
+        <div>
+            <div style="border: 1px solid #333; height: 180px; margin-bottom: 25px; display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 40px;">⚡</span>
+            </div>
+            <h3 style="font-size: 18px; margin-bottom: 15px;">SOLIDIFY YOUR RATES</h3>
+            <p style="text-transform: none; color: #888; font-size: 14px; line-height: 1.6;">Stop low-balling. Disnet frameworks help you define high-ticket offerings based on real software value.</p>
+        </div>
+        <div>
+            <div style="border: 1px solid #333; height: 180px; margin-bottom: 25px; display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 40px;">📂</span>
+            </div>
+            <h3 style="font-size: 18px; margin-bottom: 15px;">CLEAR CLIENT PROCESS</h3>
+            <p style="text-transform: none; color: #888; font-size: 14px; line-height: 1.6;">A seamless onboarding experience. Your clients will never have to ask "what's next?" with our project portal.</p>
+        </div>
+        <div>
+            <div style="border: 1px solid #333; height: 180px; margin-bottom: 25px; display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 40px;">📉</span>
+            </div>
+            <h3 style="font-size: 18px; margin-bottom: 15px;">TRACK YOUR FINANCES</h3>
+            <p style="text-transform: none; color: #888; font-size: 14px; line-height: 1.6;">Automated invoicing and M-Pesa tracking integrated directly into your Disnet Finance OS.</p>
+        </div>
+    </div>
+</section>
+
+<section style="background: #0a0a0a; padding: 100px 40px;">
+    <h2 style="font-size: 12px; color: #666; letter-spacing: 2px; margin-bottom: 40px;">[ FREQUENTLY ASKED QUESTIONS ]</h2>
+    <div style="max-width: 800px; border-top: 1px solid #222;">
+        <details style="border-bottom: 1px solid #222; padding: 25px 0; cursor: pointer;">
+            <summary style="font-weight: 900; list-style: none;">HOW DOES DELIVERY WORK?</summary>
+            <p style="text-transform: none; color: #888; font-size: 14px; margin-top: 20px;">After your M-Pesa payment is confirmed, you'll receive a digital download link instantly via email.</p>
+        </details>
+        <details style="border-bottom: 1px solid #222; padding: 25px 0; cursor: pointer;">
+            <summary style="font-weight: 900; list-style: none;">DO I NEED A PAID NOTION ACCOUNT?</summary>
+            <p style="text-transform: none; color: #888; font-size: 14px; margin-top: 20px;">No. All Disnet frameworks and workspaces function perfectly on the free Notion tier.</p>
+        </details>
+        <details style="border-bottom: 1px solid #222; padding: 25px 0; cursor: pointer;">
+            <summary style="font-weight: 900; list-style: none;">REFUND POLICY</summary>
+            <p style="text-transform: none; color: #888; font-size: 14px; margin-top: 20px;">Due to the digital nature of these products, all sales are final once the download link is generated.</p>
+        </details>
+    </div>
+</section>
+
+
+<footer>
+    <div class="giant-footer-logo">DISNET STUDIOS</div>
+    <p style="margin-top:20px; font-size:12px; color:#555;">© 2026, DISNET STUDIOS. POWERED BY CODE.</p>
+</footer>
+
+<script>
+    let cart = [];
+
+    function toggleCart() {
+        document.getElementById('cart-drawer').classList.toggle('open');
+    }
+
+    function addToCart(name, price) {
+        cart.push({name, price});
+        updateCart();
+        toggleCart();
+    }
+
+    function updateCart() {
+        const container = document.getElementById('cart-items');
+        container.innerHTML = cart.map(item => `
+            <div style="display:flex; justify-content:space-between; margin-bottom:20px; border-bottom:1px solid #222; padding-bottom:10px;">
+                <span>${item.name}</span>
+                <span>KSH ${item.price}</span>
+            </div>
+        `).join('');
+        
+        if(cart.length > 0) {
+            document.getElementById('stk-section').classList.add('active');
+        }
+    }
+
+    function initiateSTK() {
+        const phone = document.getElementById('phone').value;
+        if(!phone) return alert("Please enter your M-Pesa number");
+        
+        alert("STK Push Initiated to " + phone + ". Check your handset.");
+        // Here you would use fetch() to trigger your Daraja API backend
+    }
+</script>
+
+</body>
+</html>
