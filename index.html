@@ -194,12 +194,16 @@
 .bg-video {
     position: absolute;
     inset: 0;
+
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    z-index: -4;
-}
 
+    object-fit: cover;
+
+    z-index: -2;
+
+    pointer-events: none;
+}
 /* Dark cinematic overlay */
 
 .hero-overlay {
@@ -555,10 +559,18 @@
 <header class="hero-video">
 
     <!-- Background Video -->
-    <video autoplay muted loop playsinline class="bg-video">
-        <source src="freecompress-12336255-uhd_3840_2160_25fps.mp4" type="video/mp4">
-    </video>
-
+    <video
+    autoplay
+    muted
+    loop
+    playsinline
+    webkit-playsinline
+    preload="auto"
+    class="bg-video"
+>
+    <source src="freecompress-12336255-uhd_3840_2160_25fps.mp4" type="video/mp4">
+</video>
+    
     <!-- Dark Overlay -->
     <div class="hero-overlay"></div>
 
@@ -792,7 +804,25 @@ function captureLead() {
         // Here you would use fetch() to trigger your Daraja API backend
     }
 </script>
+<script>
 
+document.addEventListener("DOMContentLoaded", () => {
+
+    const video = document.querySelector(".bg-video");
+
+    if(video){
+
+        video.play().catch(() => {
+
+            console.log("Autoplay prevented");
+
+        });
+
+    }
+
+});
+
+</script>
 </body>
 
 </html>
