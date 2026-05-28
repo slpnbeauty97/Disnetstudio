@@ -384,74 +384,33 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
 
-    gap: 25px;
+    gap: 22px;
 
-    margin-top: 40px;
-
-    opacity: 0.85;
+    margin-top: 30px;
 }
 
-/* Logos */
-
 .logo-strip img {
-
-    height: 20px;
+    height: 18px;
     width: auto;
 
-    max-width: 80px;
+    max-width: 70px;
 
     object-fit: contain;
 
-    filter: brightness(0) invert(1);
-
-    opacity: 0.8;
+    opacity: 0.75;
 
     transition: 0.3s ease;
 }
-
-/* Hover */
 
 .logo-strip img:hover {
     opacity: 1;
     transform: translateY(-2px);
 }
 
-/* Optional spacing */
-
-.logos-row {
-    margin-top: 18px;
-}
-
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media (max-width: 768px) {
-
-    .logo-strip {
-        gap: 18px;
-    }
-
-    .logo-strip img {
-        height: 16px;
-        max-width: 65px;
-    }
-
-}
-
-/* Small phones */
-
-@media (max-width: 480px) {
-
-    .hero-big-text {
-        font-size: 2.5rem;
-    }
-
-    .hero-description {
-        font-size: 0.95rem;
-    }
 
     .logo-strip {
         gap: 14px;
@@ -463,86 +422,6 @@
     }
 
 }
-
-/* ===================================
-   HERO VIDEO SECTION
-=================================== */
-
-.hero-video {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
-
-    display: flex;
-    align-items: center;
-
-    padding: 0 8%;
-}
-
-/* Background Video */
-
-.bg-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    z-index: -2;
-}
-
-/* Dark Overlay */
-
-.hero-overlay {
-    position: absolute;
-    inset: 0;
-
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(0,0,0,0.45),
-            rgba(0,0,0,0.75)
-        );
-
-    z-index: -1;
-}
-
-/* Content */
-
-.hero-content {
-    max-width: 750px;
-    color: white;
-}
-
-/* Small Text */
-
-.hero-mini {
-    font-size: 12px;
-    letter-spacing: 3px;
-    margin-bottom: 20px;
-    color: #cccccc;
-}
-
-/* Big Heading */
-
-.hero-content h1 {
-    font-size: clamp(4rem, 10vw, 7rem);
-    line-height: 0.9;
-    font-weight: 900;
-    letter-spacing: -4px;
-
-    margin-bottom: 25px;
-}
-
-/* Paragraph */
-
-.hero-text {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: #d0d0d0;
 
     max-width: 600px;
 
@@ -688,12 +567,6 @@
     </div>
 
 </header>
-</section>
-
-
-
-
-
 
 
 <section style="padding: 80px 40px; border-top: 1px solid #222; border-bottom: 1px solid #222;">
