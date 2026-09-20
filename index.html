@@ -234,26 +234,48 @@ body {
     </div>
 
 </div>
-<!-- PAYMENT MODAL -->
-<div id="paymentModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7);">
+<!-- WAITLIST MODAL -->
+<div id="paymentModal"
+style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,.7);">
 
-    <div style="background:white; max-width:400px; margin:100px auto; padding:20px; border-radius:6px; text-align:center;">
-        
-        <h2>Listen to Chrx!</h2>
+    <div style="background:white; max-width:400px; margin:100px auto; padding:20px; border-radius:6px;">
 
-        <p><strong>Spotify</strong></p>
-        <button onclick="selectPlan('Basic', 500)">Choose</button>
+        <h2>Join The Chrx! Waitlist</h2>
 
-        <p><strong><a>https://open.spotify.com/artist/7kUQEEhVleE8bY5fKb4VIe?si=H0Z1arRBReCY91cIbv9RKg</a></strong></p>
-        <button onclick="selectPlan('Pro', 1000)">Choose</button>
+        YOUR_GOOGLE_FORM_URL
 
-        <p><strong>Engage</strong></p>
-        <button onclick="selectPlan('VIP', 2000)">Choose</button>
+            <input
+                type="text"
+                name="entry.123456789"
+                placeholder="Your Name"
+                required
+                style="width:100%;padding:10px;margin-bottom:10px;"
+            >
 
-        <br><br>
-        <button onclick="closePayment()">Cancel</button>
+            <input
+                type="email"
+                name="entry.987654321"
+                placeholder="Your Email"
+                required
+                style="width:100%;padding:10px;margin-bottom:10px;"
+            >
+
+            <button
+                type="submit"
+                style="width:100%;padding:12px;background:#3b82f6;color:white;border:none;"
+            >
+                Join Waitlist
+            </button>
+
+        </form>
+
+        <br>
+
+        <button onclick="closePayment()">
+            Cancel
+        </button>
+
     </div>
-
 </div>
 
 <!-- INSTRUCTIONS MODAL -->
