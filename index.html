@@ -45,6 +45,11 @@ body {
     gap: 20px;
 }
 
+    .hero > div:first-child {
+    display:flex;
+    flex-direction:column;
+}
+
 /* LEFT */
 .hero h1 {
     font-size: 32px;
@@ -197,54 +202,56 @@ body {
 
 <!-- WAITLIST FORM -->
 <div style="
-    margin-top:20px;
-    max-width:260px;
+    margin-top:15px;
+    width:220px;
+    background:#ffffff;
+    padding:12px;
+    border-radius:6px;
 ">
 
     <h3 style="
-        color:white;
-        margin-bottom:10px;
-        font-size:18px;
+        font-size:15px;
+        margin-bottom:8px;
+        color:#111827;
     ">
         Join The Waitlist
     </h3>
 
     <p style="
-        color:#cbd5e1;
-        font-size:12px;
+        font-size:11px;
+        color:#6b7280;
         margin-bottom:10px;
     ">
-        Be first to hear Chrx! album updates.
+        Get notified first when the album drops.
     </p>
 
-    <!-- Replace this with your Zoho or Google Forms URL -->
-    YOUR_FORM_URL
+    <form>
 
         <input
             type="text"
-            name="name"
             placeholder="Your Name"
             required
             style="
                 width:100%;
-                padding:10px;
-                margin-bottom:10px;
-                border:none;
+                padding:8px;
+                margin-bottom:8px;
+                border:1px solid #d1d5db;
                 border-radius:4px;
+                font-size:12px;
             "
         >
 
         <input
             type="email"
-            name="email"
             placeholder="Your Email"
             required
             style="
                 width:100%;
-                padding:10px;
-                margin-bottom:10px;
-                border:none;
+                padding:8px;
+                margin-bottom:8px;
+                border:1px solid #d1d5db;
                 border-radius:4px;
+                font-size:12px;
             "
         >
 
@@ -252,11 +259,12 @@ body {
             type="submit"
             style="
                 width:100%;
-                padding:12px;
                 background:#3b82f6;
                 color:white;
                 border:none;
+                padding:10px;
                 border-radius:4px;
+                font-size:12px;
                 font-weight:bold;
                 cursor:pointer;
             "
