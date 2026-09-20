@@ -45,9 +45,10 @@ body {
     gap: 20px;
 }
 
-    .hero > div:first-child {
+.hero > div:first-child {
     display:flex;
     flex-direction:column;
+    align-items:flex-start;
 }
 
 /* LEFT */
@@ -200,6 +201,62 @@ body {
     </div>
 </div>
 
+<!-- WAITLIST -->
+<div style="
+    margin-top:15px;
+    width:220px;
+">
+
+    <h3 style="
+        color:white;
+        margin-bottom:10px;
+        font-size:16px;
+    ">
+        Join The Waitlist
+    </h3>
+
+    <form>
+
+        <input
+            type="text"
+            placeholder="Your Name"
+            style="
+                width:100%;
+                padding:8px;
+                margin-bottom:8px;
+                border-radius:4px;
+                border:none;
+            "
+        >
+
+        <input
+            type="email"
+            placeholder="Your Email"
+            style="
+                width:100%;
+                padding:8px;
+                margin-bottom:8px;
+                border-radius:4px;
+                border:none;
+            "
+        >
+
+        <button
+            type="submit"
+            class="cta-btn"
+            style="
+                width:100%;
+                border:none;
+                cursor:pointer;
+            "
+        >
+            Join Waitlist
+        </button>
+
+    </form>
+
+</div>
+
 <!-- WAITLIST FORM -->
 <div style="
     margin-top:15px;
@@ -276,65 +333,6 @@ body {
 
 </div>
 
-<!-- WAITLIST FORM -->
-<div style="
-    margin-top:20px;
-    background:#ffffff;
-    padding:15px;
-    border-radius:6px;
-    border:1px solid #d1d5db;
-">
-
-    <h3 style="margin-bottom:10px;">
-        Join The Chrx! Waitlist
-    </h3>
-
-    <p style="font-size:13px; margin-bottom:10px;">
-        Get notified first when the album drops.
-    </p>
-
-    <!-- Replace action URL with your Google Form or Zoho Form URL -->
-    YOUR_FORM_URL
-
-        <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            required
-            style="
-                width:100%;
-                padding:10px;
-                margin-bottom:10px;
-                border:1px solid #ccc;
-                border-radius:4px;
-            "
-        >
-
-        <input
-            type="email"
-            name="email"
-            placeholder="Your Email"
-            required
-            style="
-                width:100%;
-                padding:10px;
-                margin-bottom:10px;
-                border:1px solid #ccc;
-                border-radius:4px;
-            "
-        >
-
-        <button
-            type="submit"
-            class="cta-btn"
-            style="width:100%; border:none; cursor:pointer;"
-        >
-            Join Waitlist
-        </button>
-
-    </form>
-
-</div>
         <!-- RIGHT -->
         <div class="video-box">
             <img src="Lookbook (1).jpg">
